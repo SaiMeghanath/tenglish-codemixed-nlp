@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tenglish Annotation Tool</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Syne:wght@400;600;700;800&display=swap');
+  :root {
+    --bg:#0e0f11; --surface:#16181c; --border:#2a2d35;
+    --text:#e8eaf0; --muted:#6b7080; --accent:#f0c040;
+    --red:#f05050; --green:#50c878; --blue:#5090f0; --orange:#f07830; --purple:#a070f0;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; min-height:100vh; display:flex; flex-direction:column; }
+
+  header { padding:16px 28px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; background:var(--surface); position:sticky; top:0; z-index:100; }
+  header h1 { font-size:14px; font-weight:700; letter-spacing:.08em; color:var(--accent); text-transform:uppercase; }
+  #header-meta { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--muted); }
+
+  #progress-wrap { height:3px; background:var(--border); }
+  #progress-bar { height:100%; background:var(--accent); width:0%; transition:width .3s; }
+
+  #landing { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; padding:40px; text-align:center; }
+  #landing h2 { font-size:24px; }
+  #landing p { color:var(--muted); font-size:14px; line-height:1.9; }
+  #landing code { background:#1e2028; padding:2px 8px; border-radius:4px; font-family:'JetBrains Mono',monospace; }
+  kbd { background:#2a2d35; padding:2px 7px; border-radius:3px; font-family:'JetBrains Mono',monospace; font-size:12px; }
+  .btn-accent { background:var(--accent); color:#0e0f11; border:none; border-radius:8px; padding:14px 36px; font-family:'Syne',sans-serif; font-size:15px; font-weight:700; cursor:pointer; transition:all .15s; }
+  .btn-accent:hover { background:#f8d060; transform:translateY(-1px); }
+
+  #app { flex:1; display:none; grid-template-columns:1fr 330px; gap:20px; max-width:1200px; margin:0 auto; width:100%; padding:24px; }
+
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:22px; }
+
+  /* Comment card */
+  #comment-card { display:flex; flex-direction:column; gap:18px; }
+  .cmeta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); }
+  .ch-tag { background:#1e2028; border:1px solid var(--border); border-radius:4px; padding:3px 8px; color:var(--blue); }
+  .teng-yes { background:#1a2e1a; color:var(--green); border:1px solid #2d4a2d; border-radius:4px; padding:3px 8px; }
+  .teng-no  { background:#1e1e1e; color:var(--muted); border:1px solid var(--border); border-radius:4px; padding:3px 8px; }
+
+  /* Video title context box */
+  #video-context { background:#1a1c22; border:1px solid var(--border); border-radius:6px; padding:10px 14px; font-size:12px; color:var(--muted); }
+  #video-context span { color:var(--text); font-weight:600; }
+
+  #comment-text { font-size:17px; line-height:1.75; border-left:3px solid var(--accent); padding-left:16px; min-height:70px; }
+
+  .cnav { display:flex; gap:10px; align-items:center; }
+  .nav-btn { background:none; border:1px solid var(--border); color:var(--muted); padding:8px 14px; border-radius:6px; cursor:pointer; font-family:'Syne',sans-serif; font-size:13px; transition:all .15s; }
+  .nav-btn:hover { border-color:var(--accent); color:var(--accent); }
+  #counter { margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--muted); }
+
+  /* Panel */
+  #panel { display:flex; flex-direction:column; gap:12px; overflow-y:auto; max-height:calc(100vh - 80px); padding-bottom:20px; }
+  .section-title { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .section-title::after { content:''; flex:1; height:1px; background:var(--border); }
+
+  .lbtn { background:#1a1c22; border:1.5px solid var(--border); border-radius:8px; padding:10px 14px; cursor:pointer; font-family:'Syne',sans-serif; font-size:13px; font-weight:600; color:var(--muted); text-align:left; display:flex; align-items:center; gap:9px; transition:all .15s; width:100%; margin-bottom:6px; }
+  .lbtn:hover { border-color:#3a3d48; color:var(--text); }
+  .lbtn.sel-0 { border-color:var(--green);  color:var(--green);  background:#0f2018; }
+  .lbtn.sel-1 { border-color:var(--red);    color:var(--red);    background:#200f0f; }
+  .lbtn.sel-2 { border-color:var(--muted);  color:var(--muted);  background:#1a1c22; border-style:dashed; }
+  /* Sentiment specific */
+  .lbtn.sent-pos { border-color:var(--green);  color:var(--green);  background:#0f2018; }
+  .lbtn.sent-neg { border-color:var(--red);    color:var(--red);    background:#200f0f; }
+  .lbtn.sent-neu { border-color:var(--muted);  color:var(--muted);  background:#1a1c22; border-style:dashed; }
+  /* Stance specific */
+  .lbtn.sta-sup { border-color:var(--blue);   color:var(--blue);   background:#0f1820; }
+  .lbtn.sta-opp { border-color:var(--orange); color:var(--orange); background:#201508; }
+  .lbtn.sta-neu { border-color:var(--muted);  color:var(--muted);  background:#1a1c22; border-style:dashed; }
+
+  .dot { width:7px; height:7px; border-radius:50%; background:currentColor; flex-shrink:0; }
+  .kk  { margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; background:#2a2d35; border-radius:3px; padding:2px 5px; color:var(--muted); }
+
+  #submit-btn { background:var(--accent); color:#0e0f11; border:none; border-radius:8px; padding:13px; font-family:'Syne',sans-serif; font-weight:700; font-size:14px; cursor:pointer; width:100%; transition:all .15s; letter-spacing:.03em; }
+  #submit-btn:hover:not(:disabled) { background:#f8d060; }
+  #submit-btn:disabled { background:var(--border); color:var(--muted); cursor:not-allowed; }
+
+  /* Progress indicators under each task */
+  .task-check { font-family:'JetBrains Mono',monospace; font-size:10px; margin-bottom:8px; }
+  .task-check.done { color:var(--green); }
+  .task-check.pending { color:var(--muted); }
+
+  /* Stats */
+  .stat-group { margin-bottom:10px; }
+  .stat-group-title { font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); margin-bottom:5px; font-weight:700; }
+  .stat-row { display:flex; justify-content:space-between; margin-bottom:3px; font-family:'JetBrains Mono',monospace; font-size:11px; }
+  .stat-row span:first-child { color:var(--muted); }
+  .stat-bar { height:3px; background:var(--border); border-radius:2px; margin-bottom:8px; overflow:hidden; }
+  .stat-bar-fill { height:100%; border-radius:2px; transition:width .3s; }
+
+  .fc-btn { background:#1a1c22; border:1px solid var(--border); border-radius:6px; padding:9px 12px; font-family:'Syne',sans-serif; font-size:13px; font-weight:600; color:var(--text); cursor:pointer; width:100%; margin-bottom:6px; transition:all .15s; text-align:center; }
+  .fc-btn:hover { border-color:var(--accent); color:var(--accent); }
+  .fc-btn.g { border-color:var(--green); color:var(--green); }
+  .fc-btn.g:hover { background:#0f2018; }
+
+  #toast { position:fixed; bottom:22px; left:50%; transform:translateX(-50%); background:var(--surface); border:1px solid var(--accent); color:var(--accent); padding:9px 18px; border-radius:8px; font-family:'JetBrains Mono',monospace; font-size:13px; opacity:0; transition:opacity .3s; pointer-events:none; z-index:999; white-space:nowrap; }
+  #toast.show { opacity:1; }
+
+  /* 100-comment milestone alert */
+  #milestone { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:var(--surface); border:2px solid var(--accent); border-radius:12px; padding:32px 40px; z-index:200; text-align:center; max-width:480px; width:90%; }
+  #milestone h2 { color:var(--accent); margin-bottom:12px; font-size:20px; }
+  #milestone p  { color:var(--muted); font-size:13px; line-height:1.7; margin-bottom:20px; }
+  #milestone-close { background:var(--accent); color:#0e0f11; border:none; border-radius:8px; padding:10px 24px; font-family:'Syne',sans-serif; font-weight:700; cursor:pointer; }
+  #overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:199; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⬡ Tenglish Annotation Tool v2</h1>
+  <span id="header-meta">No dataset loaded</span>
+</header>
+<div id="progress-wrap"><div id="progress-bar"></div></div>
+
+<!-- LANDING -->
+<div id="landing">
+  <h2>Load your dataset</h2>
+  <p>Select <code>raw_comments.csv</code> to begin.<br><br>
+    <strong>Sentiment:</strong> <kbd>Q</kbd> Positive &nbsp; <kbd>W</kbd> Negative &nbsp; <kbd>E</kbd> Neutral<br>
+    <strong>Toxicity:</strong> &nbsp;<kbd>1</kbd> Not Toxic &nbsp; <kbd>2</kbd> Toxic &nbsp; <kbd>3</kbd> Ambiguous<br>
+    <strong>Stance:</strong> &nbsp;&nbsp;&nbsp;<kbd>A</kbd> Support &nbsp; <kbd>S</kbd> Oppose &nbsp; <kbd>D</kbd> Neutral<br><br>
+    <kbd>Enter</kbd> Submit &amp; Next &nbsp;&nbsp; <kbd>← →</kbd> Navigate
+  </p>
+  <input type="file" id="file-input" accept=".csv" style="display:none" onchange="loadCSV(event)">
+  <button class="btn-accent" onclick="document.getElementById('file-input').click()">📂 Load CSV</button>
+</div>
+
+<!-- APP -->
+<div id="app">
+
+  <!-- Left: comment -->
+  <div class="card" id="comment-card">
+    <div class="cmeta">
+      <span class="ch-tag" id="ch-tag">—</span>
+      <span class="tenglish-badge" id="teng-badge">—</span>
+      <span style="margin-left:auto" id="date-lbl">—</span>
+    </div>
+
+    <!-- Video title as stance context -->
+    <div id="video-context">📰 News topic: <span id="vid-title">—</span></div>
+
+    <div id="comment-text">—</div>
+
+    <div class="cnav">
+      <button class="nav-btn" onclick="navigate(-1)">← Prev</button>
+      <button class="nav-btn" onclick="navigate(1)">Next →</button>
+      <span id="counter">0 / 0</span>
+    </div>
+  </div>
+
+  <!-- Right: panel -->
+  <div id="panel">
+
+    <!-- Sentiment -->
+    <div class="card">
+      <div class="section-title">① Sentiment</div>
+      <div class="task-check pending" id="chk-sent">○ not set</div>
+      <button class="lbtn" id="s-pos" onclick="setL('sent',0)"><span class="dot"></span>Positive<span class="kk">Q</span></button>
+      <button class="lbtn" id="s-neg" onclick="setL('sent',1)"><span class="dot"></span>Negative<span class="kk">W</span></button>
+      <button class="lbtn" id="s-neu" onclick="setL('sent',2)"><span class="dot"></span>Neutral<span class="kk">E</span></button>
+    </div>
+
+    <!-- Toxicity -->
+    <div class="card">
+      <div class="section-title">② Toxicity</div>
+      <div class="task-check pending" id="chk-tox">○ not set</div>
+      <button class="lbtn" id="t-not" onclick="setL('tox',0)"><span class="dot"></span>Not Toxic<span class="kk">1</span></button>
+      <button class="lbtn" id="t-tox" onclick="setL('tox',1)"><span class="dot"></span>Toxic<span class="kk">2</span></button>
+      <button class="lbtn" id="t-amb" onclick="setL('tox',2)"><span class="dot"></span>Ambiguous<span class="kk">3</span></button>
+    </div>
+
+    <!-- Stance -->
+    <div class="card">
+      <div class="section-title">③ Stance <span style="font-size:9px;color:var(--muted);text-transform:none;font-weight:400;">(re: news topic above)</span></div>
+      <div class="task-check pending" id="chk-sta">○ not set</div>
+      <button class="lbtn" id="st-sup" onclick="setL('sta',0)"><span class="dot"></span>Support<span class="kk">A</span></button>
+      <button class="lbtn" id="st-opp" onclick="setL('sta',1)"><span class="dot"></span>Oppose<span class="kk">S</span></button>
+      <button class="lbtn" id="st-neu" onclick="setL('sta',2)"><span class="dot"></span>Neutral<span class="kk">D</span></button>
+    </div>
+
+    <button id="submit-btn" onclick="submit()" disabled>Submit &amp; Next →</button>
+
+    <!-- Stats -->
+    <div class="card">
+      <div class="section-title">Distribution</div>
+
+      <div class="stat-group">
+        <div class="stat-group-title">Sentiment</div>
+        <div class="stat-row"><span>Positive</span><span id="d-sp">0</span></div>
+        <div class="stat-bar"><div class="stat-bar-fill" id="b-sp" style="background:var(--green);width:0%"></div></div>
+        <div class="stat-row"><span>Negative</span><span id="d-sn">0</span></div>
+        <div class="stat-bar"><div class="stat-bar-fill" id="b-sn" style="background:var(--red);width:0%"></div></div>
+        <div class="stat-row"><span>Neutral</span><span id="d-snu">0</span></div>
+        <div class="stat-bar"><div class="stat-bar-fill" id="b-snu" style="background:var(--muted);width:0%"></div></div>
+      </div>
+
+      <div class="stat-group">
+        <div class="stat-group-title">Toxicity</div>
+        <div class="stat-row"><span>Not Toxic</span><span id="d-tnt">0</span></div>
+        <div class="stat-bar"><div class="stat-bar-fill" id="b-tnt" style="background:var(--green);width:0%"></div></div>
+        <div class="stat-row"><span>Toxic</span><span id="d-tt">0</span></div>
+        <div class="stat-bar"><div class="stat-bar-fill" id="b-tt" style="background:var(--red);width:0%"></div></div>
+        <div class="stat-row"><span>Ambiguous</span><span id="d-ta">0</span></div>
+        <div class="stat-bar"><div class="stat-bar-fill" id="b-ta" style="background:var(--muted);width:0%"></div></div>
+      </div>
+
+      <div class="stat-group">
+        <div class="stat-group-title">Stance</div>
+        <div class="stat-row"><span>Support</span><span id="d-stsup">0</span></div>
+        <div class="stat-bar"><div class="stat-bar-fill" id="b-stsup" style="background:var(--blue);width:0%"></div></div>
+        <div class="stat-row"><span>Oppose</span><span id="d-stopp">0</span></div>
+        <div class="stat-bar"><div class="stat-bar-fill" id="b-stopp" style="background:var(--orange);width:0%"></div></div>
+        <div class="stat-row"><span>Neutral</span><span id="d-stneu">0</span></div>
+        <div class="stat-bar"><div class="stat-bar-fill" id="b-stneu" style="background:var(--muted);width:0%"></div></div>
+      </div>
+
+      <div class="stat-row" style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px;">
+        <span>Annotated</span><span id="s-done" style="color:var(--accent)">0</span>
+      </div>
+      <div class="stat-row"><span>Remaining</span><span id="s-left">0</span></div>
+    </div>
+
+    <!-- File controls -->
+    <div class="card">
+      <div class="section-title">File Controls</div>
+      <input type="file" id="fi2" accept=".csv" style="display:none" onchange="loadCSV(event)">
+      <button class="fc-btn" onclick="document.getElementById('fi2').click()">📂 Load New CSV</button>
+      <button class="fc-btn g" onclick="exportCSV()">💾 Export Annotated CSV</button>
+      <button class="fc-btn" onclick="saveJSON()">🔖 Save Progress</button>
+      <input type="file" id="fi3" accept=".json" style="display:none" onchange="restoreJSON(event)">
+      <button class="fc-btn" onclick="document.getElementById('fi3').click()">↩ Restore Progress</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- 100-comment milestone modal -->
+<div id="overlay" onclick="closeMilestone()"></div>
+<div id="milestone">
+  <h2>🎯 100 Comments Annotated</h2>
+  <p>Good time to stop and check the distribution panel.<br>
+  Look for any severely imbalanced classes before continuing.<br><br>
+  Export your CSV and share the distribution with Dr. Thushara.</p>
+  <button id="milestone-close" onclick="closeMilestone()">Continue Annotating</button>
+</div>
+
+<div id="toast"></div>
+
+<script>
+let data=[], labels={}, cur=0;
+let pSent=null, pTox=null, pSta=null;
+
+const SM={0:'positive',1:'negative',2:'neutral'};
+const TM={0:'not_toxic',1:'toxic',2:'ambiguous'};
+const STM={0:'support',1:'oppose',2:'neutral'};
+
+function parseCSV(txt){
+  const lines=txt.split('\n'); if(lines.length<2) return [];
+  const hdr=splitLine(lines[0]);
+  return lines.slice(1).filter(l=>l.trim()).map(l=>{
+    const v=splitLine(l),o={};
+    hdr.forEach((h,i)=>o[h.trim()]=(v[i]||'').trim());
+    return o;
+  });
+}
+function splitLine(l){
+  const r=[]; let c='',q=false;
+  for(const ch of l){ if(ch==='"'){q=!q;}else if(ch===','&&!q){r.push(c);c='';}else c+=ch; }
+  r.push(c); return r;
+}
+
+function loadCSV(e){
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    data=parseCSV(ev.target.result);
+    labels={}; cur=0; pSent=null; pTox=null; pSta=null;
+    document.getElementById('landing').style.display='none';
+    document.getElementById('app').style.display='grid';
+    render(); updateStats();
+    toast('Loaded '+data.length+' comments');
+  };
+  r.readAsText(f,'utf-8');
+}
+
+function render(){
+  if(!data.length) return;
+  const row=data[cur], lbl=labels[cur];
+  document.getElementById('comment-text').textContent=row.text||'—';
+  document.getElementById('ch-tag').textContent=row.channel_name||row.username||'—';
+  const vt=row.video_title||'';
+  document.getElementById('vid-title').textContent=vt||'(no title)';
+  document.getElementById('date-lbl').textContent=(row.published_at||row.date||'').slice(0,10);
+  const isTeng=row.is_tenglish==='True'||row.is_tenglish==='true'||row.is_tenglish==='1';
+  const tb=document.getElementById('teng-badge');
+  tb.textContent=isTeng?'Tenglish ✓':'Non-Tenglish';
+  tb.className=isTeng?'teng-yes':'teng-no';
+  document.getElementById('counter').textContent=(cur+1)+' / '+data.length;
+  document.getElementById('header-meta').textContent=Object.keys(labels).length+' / '+data.length+' annotated';
+  document.getElementById('progress-bar').style.width=(Object.keys(labels).length/data.length*100)+'%';
+  pSent=lbl?lbl.sent:null;
+  pTox =lbl?lbl.tox :null;
+  pSta =lbl?lbl.sta :null;
+  refreshBtns();
+}
+
+function setL(type,v){
+  if(type==='sent') pSent=v;
+  if(type==='tox')  pTox=v;
+  if(type==='sta')  pSta=v;
+  refreshBtns(); checkReady();
+}
+
+function refreshBtns(){
+  // Sentiment
+  const sc=['sent-pos','sent-neg','sent-neu'];
+  ['s-pos','s-neg','s-neu'].forEach((id,i)=>{
+    const el=document.getElementById(id); if(!el) return;
+    el.className='lbtn'+(pSent===i?' '+sc[i]:'');
+  });
+  // Toxicity
+  const tc=['sel-0','sel-1','sel-2'];
+  ['t-not','t-tox','t-amb'].forEach((id,i)=>{
+    const el=document.getElementById(id); if(!el) return;
+    el.className='lbtn'+(pTox===i?' '+tc[i]:'');
+  });
+  // Stance
+  const stc=['sta-sup','sta-opp','sta-neu'];
+  ['st-sup','st-opp','st-neu'].forEach((id,i)=>{
+    const el=document.getElementById(id); if(!el) return;
+    el.className='lbtn'+(pSta===i?' '+stc[i]:'');
+  });
+  // Check indicators
+  const chkSent=document.getElementById('chk-sent');
+  const chkTox =document.getElementById('chk-tox');
+  const chkSta =document.getElementById('chk-sta');
+  if(chkSent){ chkSent.textContent=pSent!==null?'✓ '+SM[pSent]:'○ not set'; chkSent.className='task-check '+(pSent!==null?'done':'pending'); }
+  if(chkTox){  chkTox.textContent =pTox !==null?'✓ '+TM[pTox] :'○ not set'; chkTox.className ='task-check '+(pTox !==null?'done':'pending'); }
+  if(chkSta){  chkSta.textContent =pSta !==null?'✓ '+STM[pSta]:'○ not set'; chkSta.className ='task-check '+(pSta !==null?'done':'pending'); }
+}
+
+function checkReady(){
+  const b=document.getElementById('submit-btn');
+  if(b) b.disabled=(pSent===null||pTox===null||pSta===null);
+}
+
+function submit(){
+  if(pSent===null||pTox===null||pSta===null) return;
+  labels[cur]={sent:pSent,tox:pTox,sta:pSta};
+  updateStats();
+  const done=Object.keys(labels).length;
+  if(done===100){ showMilestone(); }
+  const nxt=nextUnannotated(cur+1);
+  if(nxt===-1){ toast('All done! Export your CSV.'); return; }
+  cur=nxt; pSent=null; pTox=null; pSta=null; render();
+}
+
+function nextUnannotated(from){
+  for(let i=from;i<data.length;i++) if(!labels[i]) return i;
+  for(let i=0;i<from;i++) if(!labels[i]) return i;
+  return -1;
+}
+
+function navigate(d){ cur=Math.max(0,Math.min(data.length-1,cur+d)); pSent=null;pTox=null;pSta=null; render(); }
+
+function updateStats(){
+  const vals=Object.values(labels);
+  const done=vals.length;
+  const sp=vals.filter(l=>l.sent===0).length;
+  const sn=vals.filter(l=>l.sent===1).length;
+  const snu=vals.filter(l=>l.sent===2).length;
+  const tnt=vals.filter(l=>l.tox===0).length;
+  const tt=vals.filter(l=>l.tox===1).length;
+  const ta=vals.filter(l=>l.tox===2).length;
+  const ssup=vals.filter(l=>l.sta===0).length;
+  const sopp=vals.filter(l=>l.sta===1).length;
+  const sneu=vals.filter(l=>l.sta===2).length;
+  const g=id=>document.getElementById(id);
+  const pct=n=>done?Math.round(n/done*100)+'%':'0%';
+  if(g('d-sp'))    g('d-sp').textContent=sp+' ('+pct(sp)+')';
+  if(g('d-sn'))    g('d-sn').textContent=sn+' ('+pct(sn)+')';
+  if(g('d-snu'))   g('d-snu').textContent=snu+' ('+pct(snu)+')';
+  if(g('d-tnt'))   g('d-tnt').textContent=tnt+' ('+pct(tnt)+')';
+  if(g('d-tt'))    g('d-tt').textContent=tt+' ('+pct(tt)+')';
+  if(g('d-ta'))    g('d-ta').textContent=ta+' ('+pct(ta)+')';
+  if(g('d-stsup')) g('d-stsup').textContent=ssup+' ('+pct(ssup)+')';
+  if(g('d-stopp')) g('d-stopp').textContent=sopp+' ('+pct(sopp)+')';
+  if(g('d-stneu')) g('d-stneu').textContent=sneu+' ('+pct(sneu)+')';
+  if(g('b-sp'))    g('b-sp').style.width=pct(sp);
+  if(g('b-sn'))    g('b-sn').style.width=pct(sn);
+  if(g('b-snu'))   g('b-snu').style.width=pct(snu);
+  if(g('b-tnt'))   g('b-tnt').style.width=pct(tnt);
+  if(g('b-tt'))    g('b-tt').style.width=pct(tt);
+  if(g('b-ta'))    g('b-ta').style.width=pct(ta);
+  if(g('b-stsup')) g('b-stsup').style.width=pct(ssup);
+  if(g('b-stopp')) g('b-stopp').style.width=pct(sopp);
+  if(g('b-stneu')) g('b-stneu').style.width=pct(sneu);
+  if(g('s-done'))  g('s-done').textContent=done;
+  if(g('s-left'))  g('s-left').textContent=data.length-done;
+}
+
+function showMilestone(){
+  document.getElementById('overlay').style.display='block';
+  document.getElementById('milestone').style.display='block';
+}
+function closeMilestone(){
+  document.getElementById('overlay').style.display='none';
+  document.getElementById('milestone').style.display='none';
+}
+
+function exportCSV(){
+  if(!data.length){ toast('No data loaded'); return; }
+  const rows=data.map((row,i)=>{
+    const l=labels[i]||{};
+    return {...row,
+      sentiment_label:     l.sent!==undefined?SM[l.sent]:'',
+      sentiment_numeric:   l.sent!==undefined?l.sent:'',
+      toxicity_label:      l.tox!==undefined?TM[l.tox]:'',
+      toxicity_numeric:    l.tox!==undefined?l.tox:'',
+      stance_label:        l.sta!==undefined?STM[l.sta]:'',
+      stance_numeric:      l.sta!==undefined?l.sta:'',
+      annotated:           l.sent!==undefined?'true':'false',
+      annotated_by:        'Aladurthi Sai Meghanath',
+      annotation_date:     new Date().toISOString().slice(0,10)
+    };
+  });
+  const hdrs=Object.keys(rows[0]);
+  const csv=[hdrs.join(','),...rows.map(r=>hdrs.map(h=>'"'+String(r[h]||'').replace(/"/g,'""')+'"').join(','))].join('\n');
+  dl(new Blob([csv],{type:'text/csv;charset=utf-8;'}),'annotated_comments.csv');
+  toast('Exported annotated_comments.csv');
+}
+
+function saveJSON(){
+  dl(new Blob([JSON.stringify({labels,cur,total:data.length,saved_at:new Date().toISOString()},null,2)],{type:'application/json'}),'annotation_progress.json');
+  toast('Progress saved');
+}
+function restoreJSON(e){
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=ev=>{ try{ const s=JSON.parse(ev.target.result); labels=s.labels||{}; cur=s.cur||0; render(); updateStats(); toast('Restored '+Object.keys(labels).length+' annotations'); }catch{ toast('Invalid file'); } };
+  r.readAsText(f);
+}
+function dl(blob,name){ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; a.click(); URL.revokeObjectURL(a.href); }
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500); }
+
+document.addEventListener('keydown',e=>{
+  if(!data.length||e.target.tagName==='INPUT') return;
+  switch(e.key){
+    case 'q': case 'Q': setL('sent',0); break;
+    case 'w': case 'W': setL('sent',1); break;
+    case 'e': case 'E': setL('sent',2); break;
+    case '1': setL('tox',0); break;
+    case '2': setL('tox',1); break;
+    case '3': setL('tox',2); break;
+    case 'a': case 'A': setL('sta',0); break;
+    case 's': case 'S': setL('sta',1); break;
+    case 'd': case 'D': setL('sta',2); break;
+    case 'Enter': submit(); break;
+    case 'ArrowRight': navigate(1); break;
+    case 'ArrowLeft': navigate(-1); break;
+  }
+});
+</script>
+</body>
+</html>

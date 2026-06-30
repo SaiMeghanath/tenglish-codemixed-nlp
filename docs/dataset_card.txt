@@ -1,0 +1,500 @@
+DATASET CARD
+============
+Title       : Telugu-English Code-Mixed News Comments Dataset
+Task        : Toxicity Detection + Fake News Detection
+Paper       : Explainable Transformer-Based Analysis of Telugu-English
+              Code-Mixed News Comments
+Author      : Aladurthi Sai Meghanath (AA.SC.P2MCA24074053)
+Supervisor  : Dr. Thushara M.G., Amrita Vishwa Vidyapeetham (Amrita AHEAD)
+
+Collection method   : YouTube Data API v3
+Collection date     : 2026-06-18 to 2026-06-18
+API version         : youtube/v3
+Comment order       : relevance (YouTube default)
+Replies collected   : True
+
+Sources
+-------
+  TV9 Telugu Digital        video:Tmkk9LXavDI  comments:3  tenglish:1
+  TV9 Telugu Digital        video:f_wb_NdiI7Q  comments:0  tenglish:0
+  TV9 Telugu Digital        video:FsQiK0VyVi0  comments:0  tenglish:0
+  TV9 Telugu Digital        video:Pi49ILFqfBM  comments:0  tenglish:0
+  TV9 Telugu Digital        video:3Ivkn0z9H_o  comments:2  tenglish:1
+  TV9 Telugu Digital        video:UwG2tm-UrIw  comments:0  tenglish:0
+  TV9 Telugu Digital        video:vdwMWzeU8oo  comments:0  tenglish:0
+  TV9 Telugu Digital        video:wwa1QveJFtE  comments:0  tenglish:0
+  TV9 Telugu Digital        video:cVNa_NEsneU  comments:1  tenglish:0
+  TV9 Telugu Digital        video:DUbGtL2QQSM  comments:1  tenglish:1
+  TV9 Telugu Digital        video:Kxyd9YFzxs8  comments:1  tenglish:0
+  TV9 Telugu Digital        video:lcIcB0SVz9U  comments:10  tenglish:2
+  TV9 Telugu Digital        video:0WZwlbhyXk8  comments:0  tenglish:0
+  TV9 Telugu Digital        video:L34e2dq1ZUc  comments:0  tenglish:0
+  TV9 Telugu Digital        video:EyilBiwg5u4  comments:0  tenglish:0
+  TV9 Telugu Digital        video:jSD972eRENg  comments:0  tenglish:0
+  TV9 Telugu Digital        video:IW1nvYxHVyI  comments:0  tenglish:0
+  TV9 Telugu Digital        video:tv2vKCAHUSA  comments:0  tenglish:0
+  TV9 Telugu Digital        video:wbnMFN-ESro  comments:1  tenglish:0
+  TV9 Telugu Digital        video:GsUWY1Vi9IA  comments:0  tenglish:0
+  TV9 Telugu Digital        video:g3RGE72CsOQ  comments:0  tenglish:0
+  TV9 Telugu Digital        video:OwoobSEO0iI  comments:0  tenglish:0
+  TV9 Telugu Digital        video:dnxx9Z01Pfc  comments:0  tenglish:0
+  TV9 Telugu Digital        video:PUODalkO1q8  comments:0  tenglish:0
+  TV9 Telugu Digital        video:bjVVaZpHyEk  comments:5  tenglish:3
+  TV9 Telugu Digital        video:PmaHWCo_fao  comments:0  tenglish:0
+  TV9 Telugu Digital        video:PWOjhJyALjI  comments:1  tenglish:1
+  TV9 Telugu Digital        video:fTgyTSUiutU  comments:32  tenglish:15
+  TV9 Telugu Digital        video:D6VU-TVVCPI  comments:27  tenglish:19
+  TV9 Telugu Digital        video:HnvgCDoSIWc  comments:1  tenglish:1
+  TV9 Telugu Digital        video:HDd4CQ-vd3k  comments:7  tenglish:5
+  TV9 Telugu Digital        video:zwwz07jEJ7s  comments:0  tenglish:0
+  TV9 Telugu Digital        video:-9HqmtEuhWQ  comments:0  tenglish:0
+  TV9 Telugu Digital        video:FVp4QKNO-A0  comments:8  tenglish:5
+  TV9 Telugu Digital        video:X04vwbwH7D8  comments:0  tenglish:0
+  TV9 Telugu Digital        video:AQ1WQmAJVjo  comments:0  tenglish:0
+  TV9 Telugu Digital        video:SjvCcvzmNAo  comments:1  tenglish:1
+  TV9 Telugu Digital        video:fy-qsGeccZc  comments:2  tenglish:0
+  TV9 Telugu Digital        video:0DAyPdEyTCs  comments:0  tenglish:0
+  TV9 Telugu Digital        video:9AmcF89IWqM  comments:0  tenglish:0
+  TV9 Telugu Digital        video:oHfaH0Cpl0U  comments:1  tenglish:0
+  TV9 Telugu Digital        video:c5JwZnAeYAU  comments:0  tenglish:0
+  TV9 Telugu Digital        video:cLTn0tR3EdE  comments:0  tenglish:0
+  TV9 Telugu Digital        video:misITyOKbSs  comments:0  tenglish:0
+  TV9 Telugu Digital        video:Psp78Dm_d6U  comments:2  tenglish:2
+  TV9 Telugu Digital        video:zT1Q8Gc9O10  comments:0  tenglish:0
+  TV9 Telugu Digital        video:GXt8JZJocHw  comments:0  tenglish:0
+  TV9 Telugu Digital        video:bm8zw5e0BhE  comments:0  tenglish:0
+  TV9 Telugu Digital        video:iLyrCgoGtUc  comments:0  tenglish:0
+  TV9 Telugu Digital        video:9wDFTXgzT7c  comments:0  tenglish:0
+  TV9 Telugu Live           video:ZbIJMiu-wek  comments:0  tenglish:0
+  TV9 Telugu Live           video:L9z8Zdno-fw  comments:0  tenglish:0
+  TV9 Telugu Live           video:i1REiJ3QE_0  comments:0  tenglish:0
+  TV9 Telugu Live           video:SzKDYUdhUMc  comments:0  tenglish:0
+  TV9 Telugu Live           video:6t1BOzITsdg  comments:0  tenglish:0
+  TV9 Telugu Live           video:UsCh8deIu4U  comments:0  tenglish:0
+  TV9 Telugu Live           video:tcZcd31Fy3M  comments:0  tenglish:0
+  TV9 Telugu Live           video:tL7l-AH-KnU  comments:1  tenglish:0
+  TV9 Telugu Live           video:KMw5CkqLC8c  comments:0  tenglish:0
+  TV9 Telugu Live           video:cmBsXlXY-IU  comments:0  tenglish:0
+  TV9 Telugu Live           video:dcznbasUhk0  comments:0  tenglish:0
+  TV9 Telugu Live           video:LaVxXvdZzbg  comments:1  tenglish:1
+  TV9 Telugu Live           video:c7pURD8QlRo  comments:0  tenglish:0
+  TV9 Telugu Live           video:EIaD4EOgbtg  comments:1  tenglish:1
+  TV9 Telugu Live           video:tElHmegHhrs  comments:0  tenglish:0
+  TV9 Telugu Live           video:jB8FgcAxOJo  comments:1  tenglish:0
+  TV9 Telugu Live           video:YgYm5rglIX4  comments:1  tenglish:1
+  TV9 Telugu Live           video:-FGDprZW_S4  comments:1  tenglish:0
+  TV9 Telugu Live           video:VLJewAgfJXc  comments:0  tenglish:0
+  TV9 Telugu Live           video:0FvLlXJzxDo  comments:0  tenglish:0
+  TV9 Telugu Live           video:EzL1V4iOIEQ  comments:3  tenglish:0
+  TV9 Telugu Live           video:4ou5rFZOG_A  comments:1  tenglish:0
+  TV9 Telugu Live           video:g4XFc7Zl7e8  comments:0  tenglish:0
+  TV9 Telugu Live           video:d4f_mcj1Ih0  comments:0  tenglish:0
+  TV9 Telugu Live           video:7TuEAl07DqA  comments:0  tenglish:0
+  TV9 Telugu Live           video:KFWd6g96Bto  comments:6  tenglish:3
+  TV9 Telugu Live           video:cCbqjHP50oU  comments:0  tenglish:0
+  TV9 Telugu Live           video:vrkW3VdC7FA  comments:0  tenglish:0
+  TV9 Telugu Live           video:VWokvgL2ITM  comments:4  tenglish:1
+  TV9 Telugu Live           video:BCUAkxIBIsU  comments:0  tenglish:0
+  TV9 Telugu Live           video:4ht76nLJuTE  comments:1  tenglish:0
+  TV9 Telugu Live           video:eHSS2JcbOok  comments:0  tenglish:0
+  TV9 Telugu Live           video:UAkcTRXcD5I  comments:1  tenglish:1
+  TV9 Telugu Live           video:SVO8_BXVClM  comments:1  tenglish:0
+  TV9 Telugu Live           video:78OeQ_FYT3U  comments:3  tenglish:1
+  TV9 Telugu Live           video:KFerEZgyBUg  comments:0  tenglish:0
+  TV9 Telugu Live           video:IUiq4Y1QzuI  comments:0  tenglish:0
+  TV9 Telugu Live           video:lXZq760B3nc  comments:2  tenglish:0
+  TV9 Telugu Live           video:qo6hewmLoRs  comments:1  tenglish:1
+  TV9 Telugu Live           video:y6ZgUu3ttQA  comments:0  tenglish:0
+  TV9 Telugu Live           video:iZ5hxC8YET4  comments:6  tenglish:3
+  TV9 Telugu Live           video:bUDV7n-LLdg  comments:1  tenglish:1
+  TV9 Telugu Live           video:W_PAHxzwVKM  comments:0  tenglish:0
+  TV9 Telugu Live           video:4wEDVf0tg9A  comments:19  tenglish:11
+  TV9 Telugu Live           video:d791uWzxgQM  comments:0  tenglish:0
+  TV9 Telugu Live           video:6hkB8bgE73s  comments:1  tenglish:0
+  TV9 Telugu Live           video:Hp0-1VJwUbk  comments:0  tenglish:0
+  TV9 Telugu Live           video:9Yz-rw_1kH0  comments:0  tenglish:0
+  TV9 Telugu Live           video:We5d_rwyW_E  comments:2  tenglish:0
+  TV9 Telugu Live           video:sVYgDLuC8Ms  comments:9  tenglish:4
+  NTV Telugu                video:VsF50Hb9f_w  comments:1  tenglish:0
+  NTV Telugu                video:7F_jctDHKDI  comments:0  tenglish:0
+  NTV Telugu                video:jqipn7eMCVY  comments:4  tenglish:3
+  NTV Telugu                video:5VnP4BoSAHA  comments:0  tenglish:0
+  NTV Telugu                video:oz2nZFCrQUY  comments:1  tenglish:1
+  NTV Telugu                video:U9P1RE1KtDM  comments:0  tenglish:0
+  NTV Telugu                video:FiylWyjlW9U  comments:0  tenglish:0
+  NTV Telugu                video:N7WG8zw8Aic  comments:0  tenglish:0
+  NTV Telugu                video:5OA-CwKOEqE  comments:0  tenglish:0
+  NTV Telugu                video:9_Rz3xGTP9Q  comments:0  tenglish:0
+  NTV Telugu                video:4zOZAjSx4Zs  comments:0  tenglish:0
+  NTV Telugu                video:gYm8dC55zx8  comments:2  tenglish:0
+  NTV Telugu                video:z_5y92XT4cI  comments:0  tenglish:0
+  NTV Telugu                video:RTKULsIpmvA  comments:0  tenglish:0
+  NTV Telugu                video:t0GkIFPgLww  comments:0  tenglish:0
+  NTV Telugu                video:PlIzOgoArL8  comments:2  tenglish:2
+  NTV Telugu                video:UOuXtwLEwNI  comments:2  tenglish:1
+  NTV Telugu                video:Ni-ikRws2Xs  comments:0  tenglish:0
+  NTV Telugu                video:MV1ItERwiFk  comments:0  tenglish:0
+  NTV Telugu                video:jnVimzz7VB4  comments:0  tenglish:0
+  NTV Telugu                video:AaBe7V1mP2w  comments:0  tenglish:0
+  NTV Telugu                video:-0Fj_pkfBh8  comments:0  tenglish:0
+  NTV Telugu                video:Gl9_DHjYNqQ  comments:0  tenglish:0
+  NTV Telugu                video:GCHRL6gz2eU  comments:3  tenglish:3
+  NTV Telugu                video:SidrRSATbAM  comments:1  tenglish:1
+  NTV Telugu                video:-2ItQSeQKmA  comments:0  tenglish:0
+  NTV Telugu                video:GsSqMc7dew4  comments:0  tenglish:0
+  NTV Telugu                video:bMXNHrZ3Was  comments:6  tenglish:2
+  NTV Telugu                video:3RJCrkTQEfc  comments:0  tenglish:0
+  NTV Telugu                video:FpOhfp-zLXA  comments:4  tenglish:1
+  NTV Telugu                video:WR6HQdSVG9U  comments:1  tenglish:0
+  NTV Telugu                video:p9mzRhBn2mM  comments:0  tenglish:0
+  NTV Telugu                video:euIhjhSUPLo  comments:27  tenglish:15
+  NTV Telugu                video:fC-xGJaBIEk  comments:0  tenglish:0
+  NTV Telugu                video:Mpu0C_Z7WwU  comments:1  tenglish:1
+  NTV Telugu                video:DSv3IHIWhYY  comments:0  tenglish:0
+  NTV Telugu                video:VD4eIjrrBns  comments:4  tenglish:0
+  NTV Telugu                video:yZjUFCoklfk  comments:11  tenglish:10
+  NTV Telugu                video:hyYhKOsnN_0  comments:8  tenglish:2
+  NTV Telugu                video:x9Lef6A17_U  comments:2  tenglish:1
+  NTV Telugu                video:2oH4aWBcN9s  comments:0  tenglish:0
+  NTV Telugu                video:jSaB1oolgls  comments:0  tenglish:0
+  NTV Telugu                video:89Sgov1r180  comments:0  tenglish:0
+  NTV Telugu                video:4vnK2kc773I  comments:50  tenglish:34
+  NTV Telugu                video:AClaHDIQFAA  comments:0  tenglish:0
+  NTV Telugu                video:4kc7VSsQE4U  comments:20  tenglish:12
+  NTV Telugu                video:_AyCsikF6pA  comments:0  tenglish:0
+  NTV Telugu                video:y1bM_KZ9ILs  comments:7  tenglish:5
+  NTV Telugu                video:6_DR3DgKSx4  comments:0  tenglish:0
+  NTV Telugu                video:rh1ECbaprtQ  comments:1  tenglish:0
+  Sakshi TV                 video:Agps70oJjHg  comments:1  tenglish:1
+  Sakshi TV                 video:jWmlqi59pv8  comments:0  tenglish:0
+  Sakshi TV                 video:42oxJPC0aqo  comments:0  tenglish:0
+  Sakshi TV                 video:fReWvyW2Xwg  comments:1  tenglish:1
+  Sakshi TV                 video:UkyFtr0hyno  comments:0  tenglish:0
+  Sakshi TV                 video:Y07R2alMKFo  comments:0  tenglish:0
+  Sakshi TV                 video:3Xecd7C2mrI  comments:2  tenglish:2
+  Sakshi TV                 video:HLj7dfroaqo  comments:2  tenglish:2
+  Sakshi TV                 video:QJgvrtehKZU  comments:3  tenglish:0
+  Sakshi TV                 video:961JEeW00Eo  comments:11  tenglish:5
+  Sakshi TV                 video:gtHeDAydr6M  comments:0  tenglish:0
+  Sakshi TV                 video:4qbLYJP1VsI  comments:1  tenglish:1
+  Sakshi TV                 video:uiXigHd7sdU  comments:0  tenglish:0
+  Sakshi TV                 video:RM0K1NrwcOw  comments:0  tenglish:0
+  Sakshi TV                 video:s-Cc1wXxidw  comments:1  tenglish:1
+  Sakshi TV                 video:I1ckei0pLcM  comments:0  tenglish:0
+  Sakshi TV                 video:L66C8lv5TM0  comments:0  tenglish:0
+  Sakshi TV                 video:zeXLJ1icxw8  comments:2  tenglish:1
+  Sakshi TV                 video:QuTRRRqGiiU  comments:0  tenglish:0
+  Sakshi TV                 video:ih_dg3CjWhs  comments:4  tenglish:2
+  Sakshi TV                 video:TburCn9O3B8  comments:3  tenglish:1
+  Sakshi TV                 video:T1YS-RzF37A  comments:1  tenglish:0
+  Sakshi TV                 video:Q90AF74A0Y8  comments:0  tenglish:0
+  Sakshi TV                 video:oJuK8ey2-F0  comments:0  tenglish:0
+  Sakshi TV                 video:EUVXBDiQT-g  comments:1  tenglish:1
+  Sakshi TV                 video:SJQre8phDBE  comments:0  tenglish:0
+  Sakshi TV                 video:2PvGd63me7c  comments:0  tenglish:0
+  Sakshi TV                 video:XDo4zf3ZiiA  comments:1  tenglish:1
+  Sakshi TV                 video:i8cfpF5h6-w  comments:1  tenglish:1
+  Sakshi TV                 video:5yScx6gc0So  comments:0  tenglish:0
+  Sakshi TV                 video:yUdHNrkDT0Q  comments:0  tenglish:0
+  Sakshi TV                 video:8NCTmlGYEk4  comments:2  tenglish:2
+  Sakshi TV                 video:77tFq4uMzto  comments:11  tenglish:8
+  Sakshi TV                 video:UqjTYaxcdQw  comments:0  tenglish:0
+  Sakshi TV                 video:o29TKRndSM0  comments:5  tenglish:2
+  Sakshi TV                 video:DIPYnbq8lnU  comments:1  tenglish:0
+  Sakshi TV                 video:qS5qOXcH6QE  comments:5  tenglish:4
+  Sakshi TV                 video:lag1FG4ruRY  comments:14  tenglish:4
+  Sakshi TV                 video:5ZhD2_umAyM  comments:12  tenglish:8
+  Sakshi TV                 video:MHoZubLIusc  comments:2  tenglish:2
+  Sakshi TV                 video:Kp7mDVoD2tM  comments:5  tenglish:3
+  Sakshi TV                 video:MF_61aazRGU  comments:2  tenglish:1
+  Sakshi TV                 video:C_H6J2hWFEo  comments:0  tenglish:0
+  Sakshi TV                 video:-jBrXisgooc  comments:1  tenglish:0
+  Sakshi TV                 video:uZfOq81Nj00  comments:1  tenglish:1
+  Sakshi TV                 video:ADZhslH87IA  comments:51  tenglish:29
+  Sakshi TV                 video:8Qp7yxu3_Ck  comments:2  tenglish:2
+  Sakshi TV                 video:rnQrs7RU8WQ  comments:1  tenglish:1
+  Sakshi TV                 video:C9K6CG39J1M  comments:8  tenglish:6
+  Sakshi TV                 video:5bW1fOdctQw  comments:1  tenglish:0
+  Sakshi TV Live            video:chWGhymS-Z0  comments:0  tenglish:0
+  Sakshi TV Live            video:4B9sqjmvZFI  comments:2  tenglish:1
+  Sakshi TV Live            video:sUje4A6EwhA  comments:2  tenglish:1
+  Sakshi TV Live            video:6LflceQRtZE  comments:2  tenglish:1
+  Sakshi TV Live            video:v8O3ibx4T3A  comments:6  tenglish:4
+  Sakshi TV Live            video:xQxCVTJjdpk  comments:0  tenglish:0
+  Sakshi TV Live            video:KIUbNMT1OI4  comments:4  tenglish:1
+  Sakshi TV Live            video:eFJ9qO1h2X0  comments:1  tenglish:1
+  Sakshi TV Live            video:4-YPXN9FyZw  comments:0  tenglish:0
+  Sakshi TV Live            video:a0g1ElveTNM  comments:4  tenglish:4
+  Sakshi TV Live            video:fdrUEgZrpUI  comments:1  tenglish:0
+  Sakshi TV Live            video:IKySzl7kxH4  comments:27  tenglish:20
+  Sakshi TV Live            video:8VKqnE9Par0  comments:5  tenglish:3
+  Sakshi TV Live            video:jVMeq6ffw7o  comments:12  tenglish:9
+  Sakshi TV Live            video:elfEuAKsqN4  comments:2  tenglish:2
+  Sakshi TV Live            video:yXnpQc804VM  comments:30  tenglish:20
+  Sakshi TV Live            video:AJAPo6ZucYo  comments:20  tenglish:14
+  Sakshi TV Live            video:cUqmQAXMl6c  comments:210  tenglish:132
+  Sakshi TV Live            video:7SEGTbyLrKw  comments:4  tenglish:4
+  Sakshi TV Live            video:iG3YoeZOXsg  comments:16  tenglish:9
+  Sakshi TV Live            video:5wzpaHJU8gA  comments:2  tenglish:2
+  Sakshi TV Live            video:BAZ4A04ZFao  comments:147  tenglish:99
+  Sakshi TV Live            video:VYoCTtmd7RM  comments:9  tenglish:2
+  Sakshi TV Live            video:kBx_REV_h0o  comments:9  tenglish:7
+  Sakshi TV Live            video:pWL20amO1EE  comments:72  tenglish:52
+  Sakshi TV Live            video:dmqw3GT46uU  comments:96  tenglish:72
+  Sakshi TV Live            video:SZPnAJw4xrA  comments:13  tenglish:9
+  Sakshi TV Live            video:m5LeAKhdsZ4  comments:46  tenglish:32
+  Sakshi TV Live            video:pXLjFioawCI  comments:74  tenglish:47
+  Sakshi TV Live            video:EARVOIwGFCg  comments:45  tenglish:29
+  Sakshi TV Live            video:vsSpk1Q1Ipc  comments:6  tenglish:3
+  Sakshi TV Live            video:k6BQUoiAqBY  comments:200  tenglish:134
+  Sakshi TV Live            video:Roa5SlOBeEg  comments:80  tenglish:60
+  Sakshi TV Live            video:NvdhI2UdbPk  comments:32  tenglish:19
+  Sakshi TV Live            video:oQyOaYLt6hc  comments:161  tenglish:121
+  Sakshi TV Live            video:AYIfZb7g_H4  comments:5  tenglish:3
+  Sakshi TV Live            video:6OZqlLsrbwo  comments:61  tenglish:39
+  Sakshi TV Live            video:S4SuVhCsrvY  comments:17  tenglish:11
+  Sakshi TV Live            video:5TXvncur3dQ  comments:41  tenglish:26
+  Sakshi TV Live            video:gqAtN7ovClM  comments:8  tenglish:7
+  Sakshi TV Live            video:s5PWf12mt84  comments:29  tenglish:19
+  Sakshi TV Live            video:ZeP2qf8vk_s  comments:28  tenglish:16
+  Sakshi TV Live            video:6Nb6KYIndRc  comments:7  tenglish:4
+  Sakshi TV Live            video:IT42RUdPHOs  comments:32  tenglish:24
+  Sakshi TV Live            video:3zaUF-fZdgw  comments:70  tenglish:47
+  Sakshi TV Live            video:ea72AncW4uI  comments:29  tenglish:15
+  Sakshi TV Live            video:IhKfxJm5pkM  comments:5  tenglish:4
+  Sakshi TV Live            video:IWJwPiNx_pI  comments:2  tenglish:1
+  Sakshi TV Live            video:8UEGfChN5rw  comments:6  tenglish:5
+  Sakshi TV Live            video:DuVON82iJpg  comments:7  tenglish:6
+  ABN Telugu                video:kVgZmSEADC8  comments:0  tenglish:0
+  ABN Telugu                video:byd7GbjpM6U  comments:0  tenglish:0
+  ABN Telugu                video:8ArTLVv_v98  comments:0  tenglish:0
+  ABN Telugu                video:DJx120HGkhc  comments:0  tenglish:0
+  ABN Telugu                video:Uqtbr6r8UR8  comments:0  tenglish:0
+  ABN Telugu                video:79bJwbSixPM  comments:0  tenglish:0
+  ABN Telugu                video:9xqcB-EV7IM  comments:0  tenglish:0
+  ABN Telugu                video:6lpqfh4gMfQ  comments:0  tenglish:0
+  ABN Telugu                video:ln-s2vZzBps  comments:0  tenglish:0
+  ABN Telugu                video:GxzGWco5V_k  comments:0  tenglish:0
+  ABN Telugu                video:CeeqNU7oMMg  comments:0  tenglish:0
+  ABN Telugu                video:jC5Mi94CN40  comments:0  tenglish:0
+  ABN Telugu                video:JzAPNxWTzEE  comments:0  tenglish:0
+  ABN Telugu                video:R4e4MDZAN6s  comments:2  tenglish:2
+  ABN Telugu                video:rVzTrtzEjv0  comments:0  tenglish:0
+  ABN Telugu                video:dUKSQoZ8rQA  comments:1  tenglish:1
+  ABN Telugu                video:7EP1hULRWLk  comments:2  tenglish:1
+  ABN Telugu                video:CpF8hwEuwEQ  comments:0  tenglish:0
+  ABN Telugu                video:i026AtAP8H4  comments:0  tenglish:0
+  ABN Telugu                video:erGHkv8-Jmg  comments:0  tenglish:0
+  ABN Telugu                video:PyB7EP4qz8g  comments:2  tenglish:2
+  ABN Telugu                video:pZzUrx9I2M8  comments:1  tenglish:1
+  ABN Telugu                video:Hj4WgVjmu3A  comments:8  tenglish:4
+  ABN Telugu                video:HAWlc2IV90k  comments:0  tenglish:0
+  ABN Telugu                video:dxUXQVv17MU  comments:0  tenglish:0
+  ABN Telugu                video:vpdcGRP89fo  comments:0  tenglish:0
+  ABN Telugu                video:v6WTSknZpNE  comments:0  tenglish:0
+  ABN Telugu                video:thqzERNpiyU  comments:5  tenglish:4
+  ABN Telugu                video:g2w_X2XViVg  comments:1  tenglish:0
+  ABN Telugu                video:3EuXwzS7CV0  comments:2  tenglish:0
+  ABN Telugu                video:uhQrw5LL4jU  comments:7  tenglish:1
+  ABN Telugu                video:U0I6m0YqUH8  comments:0  tenglish:0
+  ABN Telugu                video:z5tD2SXxIRo  comments:2  tenglish:2
+  ABN Telugu                video:R0lOaNQPnLo  comments:0  tenglish:0
+  ABN Telugu                video:Jq4JuCHGYdU  comments:2  tenglish:1
+  ABN Telugu                video:9gVLnB4CweQ  comments:0  tenglish:0
+  ABN Telugu                video:tVkN2LlMOKY  comments:0  tenglish:0
+  ABN Telugu                video:D5c5DaGVXKU  comments:10  tenglish:6
+  ABN Telugu                video:GetOPvdUW8o  comments:0  tenglish:0
+  ABN Telugu                video:8KMlDH0F4oM  comments:0  tenglish:0
+  ABN Telugu                video:G6eloOa-_98  comments:38  tenglish:24
+  ABN Telugu                video:DHnu8YqaywE  comments:9  tenglish:3
+  ABN Telugu                video:9Xz48naD5Ag  comments:0  tenglish:0
+  ABN Telugu                video:etJLduolcVI  comments:53  tenglish:34
+  ABN Telugu                video:UhW15xMlQU8  comments:1  tenglish:1
+  ABN Telugu                video:ZmW_m6m2H-k  comments:17  tenglish:7
+  ABN Telugu                video:f3u5-H-oiQc  comments:0  tenglish:0
+  ABN Telugu                video:kSg1VL2oUvg  comments:5  tenglish:2
+  ABN Telugu                video:WyLynLiA9jc  comments:28  tenglish:20
+  ABN Telugu                video:S-hPBo0_UgM  comments:7  tenglish:2
+  10TV News Telugu          video:QbM5oI3nvNk  comments:0  tenglish:0
+  10TV News Telugu          video:_q3mXx2K5ms  comments:1  tenglish:1
+  10TV News Telugu          video:nyOfZMyBPBo  comments:0  tenglish:0
+  10TV News Telugu          video:lrzLQTmAJ6g  comments:0  tenglish:0
+  10TV News Telugu          video:dMmImXdiP1g  comments:0  tenglish:0
+  10TV News Telugu          video:E7XoAekD6kk  comments:0  tenglish:0
+  10TV News Telugu          video:8Eb1NUQX5Lw  comments:0  tenglish:0
+  10TV News Telugu          video:w12Q3Pgd_dc  comments:0  tenglish:0
+  10TV News Telugu          video:1aY6judK70c  comments:0  tenglish:0
+  10TV News Telugu          video:skFbIW9GXJQ  comments:0  tenglish:0
+  10TV News Telugu          video:DzhudGeTrZs  comments:0  tenglish:0
+  10TV News Telugu          video:pldeYZ4T4O4  comments:2  tenglish:1
+  10TV News Telugu          video:20oC921d-W4  comments:0  tenglish:0
+  10TV News Telugu          video:hbJ_X4BJEUs  comments:0  tenglish:0
+  10TV News Telugu          video:Po0E6ODLm0U  comments:0  tenglish:0
+  10TV News Telugu          video:N257Q0b5Avw  comments:0  tenglish:0
+  10TV News Telugu          video:bJzvW43K36g  comments:2  tenglish:1
+  10TV News Telugu          video:SFjS2ySDB0s  comments:0  tenglish:0
+  10TV News Telugu          video:1zglZzx-Zig  comments:0  tenglish:0
+  10TV News Telugu          video:KsJ-2xuNv90  comments:0  tenglish:0
+  10TV News Telugu          video:tKvsljvVc98  comments:0  tenglish:0
+  10TV News Telugu          video:Ef793NWmtGU  comments:0  tenglish:0
+  10TV News Telugu          video:umw_tHRj2sA  comments:0  tenglish:0
+  10TV News Telugu          video:fwIGjru90FU  comments:0  tenglish:0
+  10TV News Telugu          video:WXx6RS67go8  comments:0  tenglish:0
+  10TV News Telugu          video:Vmf9jPqN_Pc  comments:0  tenglish:0
+  10TV News Telugu          video:YHJed9mdjWg  comments:0  tenglish:0
+  10TV News Telugu          video:_iPft54P0C0  comments:0  tenglish:0
+  10TV News Telugu          video:ld2JWqGituE  comments:3  tenglish:3
+  10TV News Telugu          video:Iy2y50-c2P0  comments:0  tenglish:0
+  10TV News Telugu          video:rpO8GmWJBbs  comments:0  tenglish:0
+  10TV News Telugu          video:3Rf5qTo84H0  comments:1  tenglish:1
+  10TV News Telugu          video:3fRfzC7RHgM  comments:0  tenglish:0
+  10TV News Telugu          video:c5nDAnzKbxM  comments:1  tenglish:0
+  10TV News Telugu          video:AER66riJSGs  comments:0  tenglish:0
+  10TV News Telugu          video:04j5Yzm-JGA  comments:0  tenglish:0
+  10TV News Telugu          video:_gKUEGOnQC8  comments:0  tenglish:0
+  10TV News Telugu          video:CFQGkGp4LiY  comments:0  tenglish:0
+  10TV News Telugu          video:SyXeg0vLpAA  comments:2  tenglish:0
+  10TV News Telugu          video:6ZDxqg3itPQ  comments:5  tenglish:1
+  10TV News Telugu          video:e1e2Rc7TWjE  comments:2  tenglish:1
+  10TV News Telugu          video:8qDj7GWpcJQ  comments:1  tenglish:0
+  10TV News Telugu          video:TQEJeVWx53E  comments:1  tenglish:0
+  10TV News Telugu          video:sBpB-SMQgns  comments:0  tenglish:0
+  10TV News Telugu          video:sqW-ZRxI8k8  comments:0  tenglish:0
+  10TV News Telugu          video:8jtYsRKXmuA  comments:0  tenglish:0
+  10TV News Telugu          video:jH2IKA5WrHQ  comments:2  tenglish:2
+  10TV News Telugu          video:1Lq-95un8JM  comments:0  tenglish:0
+  10TV News Telugu          video:3yy_Lys2KPI  comments:1  tenglish:1
+  10TV News Telugu          video:QbBRP6UhhmM  comments:1  tenglish:0
+  T News Telugu             video:xScwbch9bIg  comments:0  tenglish:0
+  T News Telugu             video:wWZ1bIPRGmc  comments:0  tenglish:0
+  T News Telugu             video:V6hrjq4P3Pg  comments:1  tenglish:1
+  T News Telugu             video:0ZcHbQRSOw8  comments:0  tenglish:0
+  T News Telugu             video:B6vbC_t4LBk  comments:0  tenglish:0
+  T News Telugu             video:2YQ-WLXYkys  comments:0  tenglish:0
+  T News Telugu             video:biDIttKz7m0  comments:0  tenglish:0
+  T News Telugu             video:_Ic78mwVLNo  comments:0  tenglish:0
+  T News Telugu             video:jOCRSLvrrpg  comments:1  tenglish:1
+  T News Telugu             video:HNv5z3SOUEU  comments:1  tenglish:0
+  T News Telugu             video:0_hU4YoHAFQ  comments:0  tenglish:0
+  T News Telugu             video:V_DLb-7J3Wc  comments:0  tenglish:0
+  T News Telugu             video:gWMdQnPIzhs  comments:0  tenglish:0
+  T News Telugu             video:s_ZdRRaNSbA  comments:1  tenglish:0
+  T News Telugu             video:WqfcuOxg4Bc  comments:1  tenglish:1
+  T News Telugu             video:v8uNSDx6EGM  comments:0  tenglish:0
+  T News Telugu             video:Ss8LtxU8G3g  comments:0  tenglish:0
+  T News Telugu             video:dU9J-hwfs3s  comments:1  tenglish:0
+  T News Telugu             video:0vCz1EvlMcg  comments:0  tenglish:0
+  T News Telugu             video:67Hg4Vzmc68  comments:0  tenglish:0
+  T News Telugu             video:BSi9XJfY_So  comments:0  tenglish:0
+  T News Telugu             video:4lhbli2sm_k  comments:0  tenglish:0
+  T News Telugu             video:W8Lm5WKChIU  comments:0  tenglish:0
+  T News Telugu             video:S9PO-l-XzJE  comments:0  tenglish:0
+  T News Telugu             video:QnQhcgcwy1w  comments:0  tenglish:0
+  T News Telugu             video:BkM1oU8KBac  comments:0  tenglish:0
+  T News Telugu             video:fR_m5y_liRg  comments:0  tenglish:0
+  T News Telugu             video:2thBBgijEX4  comments:0  tenglish:0
+  T News Telugu             video:uQdmYRqmZyw  comments:0  tenglish:0
+  T News Telugu             video:XjsoSWDxjFA  comments:0  tenglish:0
+  T News Telugu             video:sXtqo61vLOA  comments:0  tenglish:0
+  T News Telugu             video:kh55qGzQU-4  comments:0  tenglish:0
+  T News Telugu             video:HlZ77FRtuNQ  comments:0  tenglish:0
+  T News Telugu             video:lfBMXxlvG9w  comments:3  tenglish:0
+  T News Telugu             video:1iGNO-Bkb2U  comments:0  tenglish:0
+  T News Telugu             video:fQbTn0aFB9A  comments:0  tenglish:0
+  T News Telugu             video:5LMZaS_AcJw  comments:0  tenglish:0
+  T News Telugu             video:bgeWvuEx8nE  comments:0  tenglish:0
+  T News Telugu             video:gME1qs3UF0M  comments:0  tenglish:0
+  T News Telugu             video:449VXTklvzQ  comments:0  tenglish:0
+  T News Telugu             video:KHMdjPruzNM  comments:0  tenglish:0
+  T News Telugu             video:PbU-Jo0q9AI  comments:0  tenglish:0
+  T News Telugu             video:7wdZdBB8yIE  comments:0  tenglish:0
+  T News Telugu             video:gg3yM3i8MSA  comments:0  tenglish:0
+  T News Telugu             video:Va5JsheMl7k  comments:0  tenglish:0
+  T News Telugu             video:aWRJ2Pz5Dr4  comments:0  tenglish:0
+  T News Telugu             video:yb1stGp1AEI  comments:0  tenglish:0
+  T News Telugu             video:9SybvmVueJY  comments:0  tenglish:0
+  T News Telugu             video:YiGbyJwWi0k  comments:0  tenglish:0
+  T News Telugu             video:vUYIKSH1fNU  comments:0  tenglish:0
+  NTV Live                  video:InJCoP0xtL0  comments:0  tenglish:0
+  NTV Live                  video:38cOaeTnPss  comments:0  tenglish:0
+  NTV Live                  video:RYEFUanJhbU  comments:0  tenglish:0
+  NTV Live                  video:7mGn-vLMpyA  comments:1  tenglish:0
+  NTV Live                  video:2D49Xnnt8_E  comments:0  tenglish:0
+  NTV Live                  video:nW1Ecl9voqk  comments:0  tenglish:0
+  NTV Live                  video:0FfNqP-4cHM  comments:0  tenglish:0
+  NTV Live                  video:DfttVdcBPo0  comments:1  tenglish:0
+  NTV Live                  video:muLxfOTlfHw  comments:1  tenglish:1
+  NTV Live                  video:qbE_noG6Tis  comments:9  tenglish:3
+  NTV Live                  video:tzWOY1Jl2K8  comments:1  tenglish:0
+  NTV Live                  video:fdVniJ5JXAw  comments:0  tenglish:0
+  NTV Live                  video:MPEG_m4rl3o  comments:0  tenglish:0
+  NTV Live                  video:g9Ex-EKYrsc  comments:0  tenglish:0
+  NTV Live                  video:kok4JhGMFrg  comments:5  tenglish:3
+  NTV Live                  video:7p2lgQ9bx6U  comments:0  tenglish:0
+  NTV Live                  video:6Pa7IfECSlc  comments:0  tenglish:0
+  NTV Live                  video:CCvzlaqLDWA  comments:0  tenglish:0
+  NTV Live                  video:0Ccn4Fgt_1I  comments:3  tenglish:1
+  NTV Live                  video:fapjbFf-Y-w  comments:0  tenglish:0
+  NTV Live                  video:nzq6FZiZOoQ  comments:17  tenglish:12
+  NTV Live                  video:xaunb_SYbHg  comments:1  tenglish:0
+  NTV Live                  video:EGEKIQsJ-qE  comments:20  tenglish:10
+  NTV Live                  video:0RY1hMCc01U  comments:0  tenglish:0
+  NTV Live                  video:9xSiY5UdBaA  comments:1  tenglish:0
+  NTV Live                  video:f7UiVGm0z_w  comments:5  tenglish:3
+  NTV Live                  video:PYjHHbTQcQ4  comments:0  tenglish:0
+  NTV Live                  video:-ow-vlNlT7E  comments:0  tenglish:0
+  NTV Live                  video:W1uFE3hASBE  comments:3  tenglish:3
+  NTV Live                  video:ZN3CAvtWlw8  comments:10  tenglish:5
+  NTV Live                  video:q3cTXUREvzk  comments:1  tenglish:1
+  NTV Live                  video:SU0E7msLPt0  comments:0  tenglish:0
+  NTV Live                  video:joxTEmGLWvA  comments:0  tenglish:0
+  NTV Live                  video:xLqWGAgzZ-E  comments:0  tenglish:0
+  NTV Live                  video:k8oiCUJIHZY  comments:1  tenglish:0
+  NTV Live                  video:l5G-4w-jAHQ  comments:0  tenglish:0
+  NTV Live                  video:w7h6vREutm4  comments:3  tenglish:1
+  NTV Live                  video:xg6T9s6UkHI  comments:0  tenglish:0
+  NTV Live                  video:EsUmcfBuXzg  comments:0  tenglish:0
+  NTV Live                  video:2ZZWeiFpD3s  comments:0  tenglish:0
+  NTV Live                  video:8JIgkGB4v3I  comments:4  tenglish:1
+  NTV Live                  video:uqmCFK5vmgU  comments:2  tenglish:2
+  NTV Live                  video:cdu8zSnX4ro  comments:0  tenglish:0
+  NTV Live                  video:PGafP6JnBt0  comments:0  tenglish:0
+  NTV Live                  video:8UXdHel6dj8  comments:0  tenglish:0
+  NTV Live                  video:qysGo3nZiWM  comments:3  tenglish:2
+  NTV Live                  video:fgBpG-SsTEc  comments:0  tenglish:0
+  NTV Live                  video:UJfyWBh5JDw  comments:0  tenglish:0
+  NTV Live                  video:dYVY5oPv2T4  comments:0  tenglish:0
+  NTV Live                  video:65m_AdhZw0E  comments:167  tenglish:114
+
+Statistics
+----------
+Total comments   : 2673
+Tenglish hits    : 1709 (63.9%)
+  Telugu script  : 1067
+  Roman Telugu   : 642
+
+Tenglish Detection Method
+--------------------------
+A comment is flagged as Tenglish if any of the following:
+  1. Contains Telugu Unicode characters (U+0C00–U+0C7F)
+  2. Script-mix ratio >= 0.05 (Telugu chars / total chars)
+  3. Matches >= 1 word from a 101-word
+     Romanized Telugu vocabulary
+
+Note: Detection is intentionally permissive at collection stage.
+Final language identification will use a dedicated LangID model
+(e.g. IndicLID or langdetect with Telugu support) during preprocessing.
+
+Annotation Protocol
+-------------------
+Labels        : toxicity (binary), fake_news (binary)
+Annotators    : 2 (student + advisor review)
+Agreement     : Cohen's kappa (target >= 0.7)
+Tool          : annotation_tool.py (included in repo)
+
+License / Ethics
+----------------
+Data source    : Public YouTube comments (publicly visible content)
+PII handling   : Author display names retained for reproducibility;
+                 will be anonymized in final released dataset.
+Intended use   : Academic NLP research only
